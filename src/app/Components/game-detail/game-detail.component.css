@@ -27,3 +27,9 @@
 .event-btn {
   padding-top: 5px;
 }
+
+#court {
+  background-image: url('~dist/court.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}

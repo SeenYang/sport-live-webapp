@@ -43,7 +43,7 @@ export class GameDetailComponent implements OnInit {
   selectedTeamEvent: string;
   selectedPlayerEvent: string;
   selectedGameEvent: string;
-  courtX = 10;
+  courtX = 7;
   courtY = 5;
   court: CourtPosition[][] = [];
 
@@ -152,12 +152,8 @@ export class GameDetailComponent implements OnInit {
   }
 
   selectTeam(team: Team) {
-    if (this.selectedTeam === team) {
-      this.selectedTeam = null;
-    } else {
-      this.selectedGameEvent = null;
-      this.selectedTeam = team;
-    }
+    this.selectedGameEvent = null;
+    this.selectedTeam = team;
     this.selectedPlayer = null;
     console.log(this.selectedTeam);
   }

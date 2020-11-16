@@ -85,7 +85,7 @@
     <div class="court-container col-4 nes-container">
       <h4>Select the position</h4>
       <div class="nes-table-responsive">
-        <table class="court nes-table is-bordered">
+        <table id="court" class="nes-table is-bordered">
           <tbody>
           <tr *ngFor="let row of court">
             <td *ngFor="let unit of row" (click)="selectPosition(unit)"
