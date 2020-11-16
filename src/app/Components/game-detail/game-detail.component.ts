@@ -135,7 +135,7 @@ export class GameDetailComponent implements OnInit {
 
     this.gameEventService.addEvent(event).subscribe((newEvent) => {
       console.log(newEvent);
-      this.messageService.add(msg);
+      this.messageService.add(msgPrefix + msg);
       this.reset();
     });
   }
