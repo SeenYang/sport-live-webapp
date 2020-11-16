@@ -1,0 +1,107 @@
+<div *ngIf="game">
+  <div class="row">
+    <br>
+  </div>
+  <div class="row">
+    <div class="col-12 nes-container is-rounded is-dark with-title">
+      <h1 class="title">{{game.teamNames[0]}} vs. {{game.teamNames[1]}}</h1>
+      <div><span>Time: </span>{{game.date | date: 'yyyy-MM-dd hh:mm'}}</div>
+    </div>
+  </div>
+  <div class="row is-rounded">
+    <div *ngIf="game.teams[0]" class="col-4 nes-container">
+      <h3 (click)="selectTeam(game.teams[0])"
+          [ngClass]="{'selected-cell':selectedTeam === game.teams[0]}">
+        {{game.teams[0].name}}
+      </h3>
+      <ul class="nes-list is-circle">
+        <li *ngFor="let player of game.teams[0].players">
+          <div (click)="selectTeam(game.teams[0]); selectPlayer(player); "
+               [ngClass]="{'selected-cell':selectedPlayer === player}">
+            {{player.firstName}} {{player.lastName}}: {{player.number}}
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="game.teams[1]" class="col-4 nes-container">
+      <h3 (click)="selectTeam(game.teams[1])"
+          [ngClass]="{'selected-cell':selectedTeam === game.teams[1]}">
+        {{game.teams[1].name}}
+      </h3>
+      <div class="lists">
+        <ul class="nes-list is-circle">
+          <li *ngFor="let player of game.teams[1].players">
+            <div (click)="selectTeam(game.teams[1]); selectPlayer(player); "
+                 [ngClass]="{'selected-cell':selectedPlayer === player}">
+              {{player.firstName}} {{player.lastName}}: {{player.number}}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="game.teams[1]" class="col-4 nes-container">
+      <h4>Game Event</h4>
+      <div class="event-container">
+        <div *ngFor="let type of gameEvents | keyvalue" class="event-btn">
+          <button (click)="selectGameEvent(type.key)"
+                  [ngClass]="{'is-disabled':selectedGameEvent === type.key}"
+                  class="nes-btn is-primary"
+                  href="#"
+                  type="button">{{type.value}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ">
+    <div class="nes-container col-2">
+      <h4>Select Team Events</h4>
+      <div class="event-container ">
+        <div class="team-event-container">
+          <div *ngFor="let type of teamEvents | keyvalue " class="event-btn">
+            <button (click)="selectTeamEvent(type.key)"
+                    [ngClass]="{'is-disabled':selectedTeamEvent === type.key}"
+                    class="nes-btn is-primary"
+                    href="#"
+                    type="button">{{type.value}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nes-container  col-2">
+      <h4>Select Player Events</h4>
+      <div class="event-container">
+        <div class="player-event-container">
+          <div *ngFor="let event of playerEvents | keyvalue" class="event-btn">
+            <button (click)="selectPlayerEvent(event.key)"
+                    [ngClass]="{'is-disabled':selectedPlayerEvent === event.key}"
+                    class="nes-btn is-success"
+                    href="#">{{event.value}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="court-container col-4 nes-container">
+      <h4>Select the position</h4>
+      <div class="nes-table-responsive">
+        <table class="court nes-table is-bordered">
+          <tbody>
+          <tr *ngFor="let row of court">
+            <td *ngFor="let unit of row" (click)="selectPosition(unit)"
+                [ngClass]="{'selected-cell':selectedPosition === unit}">{{unit.y}}, {{unit.x}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="btn-group">
+        <button class="nes-btn is-primary save-btn" (click)="save()">save</button>
+        <button class="nes-btn is-primary reset-btn" (click)="reset()">reset</button>
+      </div>
+    </div>
+    <div class="col-4 nes-container">
+      <app-messages></app-messages>
+    </div>
+  </div>
+</div>
+

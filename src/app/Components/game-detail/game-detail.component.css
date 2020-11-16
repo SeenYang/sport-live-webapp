@@ -1,0 +1,29 @@
+.selected-cell {
+  border: inset 1px red;
+  background-color: #3fc3b58c;
+}
+
+.event-container {
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  height: 300px
+}
+
+.event-container::-webkit-scrollbar{
+  display: none;
+}
+
+.btn-group {
+  width: 100%;
+  padding-top: 10px;
+}
+
+.save-btn {
+  position: absolute;
+  right: 0;
+}
+
+.event-btn {
+  padding-top: 5px;
+}
